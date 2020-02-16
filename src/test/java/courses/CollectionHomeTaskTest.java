@@ -27,10 +27,8 @@ public class CollectionHomeTaskTest {
                 new CollectionHomeTask.User("Denis", 7),
                 new CollectionHomeTask.User("Vova", 45),
                 new CollectionHomeTask.User("Marina", 15),
-                new CollectionHomeTask.User("Kolya", 15),
-                new CollectionHomeTask.User("Vova", 25),
-                new CollectionHomeTask.User("Vlad", 26),
-                new CollectionHomeTask.User("Ivan", 17));
+                new CollectionHomeTask.User("Kolya", 15), new CollectionHomeTask.User("Vova", 25),
+                new CollectionHomeTask.User("Vlad", 26), new CollectionHomeTask.User("Ivan", 17));
 
         CollectionHomeTask.User result = CollectionHomeTask.task1(users);
         assertEquals("Vova", result.getName());
@@ -54,7 +52,7 @@ public class CollectionHomeTaskTest {
                 new CollectionHomeTask.User("2342342"));
 
         int result = CollectionHomeTask.task2(users);
-        assertEquals(8 ,result);
+        assertEquals(8, result);
     }
 
 
@@ -86,19 +84,19 @@ public class CollectionHomeTaskTest {
      */
     @Test
     public void task4() {
-        Map<Integer, String> map = new HashMap<>();
-        map.put(4, "Ангелы и демоны");
-        map.put(2, "Вишневый сад");
-        map.put(3, "Тень воина");
-        map.put(5, "Преступление и наказание");
-        map.put(1, "Маша и медведь");
+        Map<Integer, List<String>> map = new HashMap<>();
+        map.put(4, Arrays.asList("Ангелы и демоны"));
+        map.put(2, Arrays.asList("Вишневый сад"));
+        map.put(3, Arrays.asList("Тень воина"));
+        map.put(5, Arrays.asList("Преступление и наказание"));
+        map.put(1, Arrays.asList("Маша и медведь"));
 
         Map result = CollectionHomeTask.task4(map);
 
-//        Assertions.assertEquals(1, result.get("Маша и медведь"));
-//        Assertions.assertEquals(2, result.get("Вишневый сад"));
-//        Assertions.assertEquals(3, result.get("Тень воина"));
-//        Assertions.assertEquals(4, result.get("Ангелы и демоны"));
-//        Assertions.assertEquals(5, result.get("Преступление и наказание"));
+        assertEquals(1, result.get("Маша и медведь"));
+        assertEquals(2, result.get("Вишневый сад"));
+        assertEquals(3, result.get("Тень воина"));
+        assertEquals(4, result.get("Ангелы и демоны"));
+        assertEquals(5, result.get("Преступление и наказание"));
     }
 }

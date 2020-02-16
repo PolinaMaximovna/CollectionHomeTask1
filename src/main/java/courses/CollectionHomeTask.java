@@ -24,7 +24,6 @@ public class CollectionHomeTask {
         System.out.println("Кол-во записей в справочнике - " + task2(peopleList));
 
         //task3
-
         List<String> bookList = new ArrayList<>();
         bookList.add("Harry Potter");
         bookList.add("The Great Gatsby");
@@ -34,18 +33,23 @@ public class CollectionHomeTask {
         bookList.add("Cinderella");
         bookList.add("Bride Bridge");
 
-
-
         System.err.println(bookList.size());
-
         Map<Integer, List<String>> shelf = task3(bookList);
-
         shelf.forEach((k,v)->
         {
             System.out.print(k + " : ");
             v.forEach(b->System.out.print(b + ", "));
             System.out.println();
         });
+
+        //task4
+
+        Map<String, Integer> map = task4(shelf);
+        map.forEach((k,v)->{
+            System.out.println(k + " - " + v);
+        });
+
+
     }
 
 
@@ -102,7 +106,6 @@ public class CollectionHomeTask {
         TreeSet<String> ageNameSet = new TreeSet<>(ageNamelist);
         String ageName = ageNameSet.last();
 
-
         User resultUser = source.stream()
                  .filter(num -> (num.name + '.' + num.age)
                 .equals(ageName)).findAny().orElse(null);
@@ -147,8 +150,6 @@ public class CollectionHomeTask {
        Map<Integer, List<String>> shelf = new HashMap<>();
         List<String> bookSortList = source.stream().sorted().collect(Collectors.toList());
 
-        bookSortList.forEach(System.err::println);
-
         int bookOnShelf = (int) (bookSortList.size() / shelfCount);
         int bookExtra = (int) (bookSortList.size() % shelfCount);
         int bookIndex = 0;
@@ -175,9 +176,11 @@ public class CollectionHomeTask {
      * 1. На вход получаем книги, распределенные по полкам
      * 5. Вернуть справочник [название книги -> номер полки]
      */
-    public static Map task4(Map<Integer, String> source) {
-        // свой код нужно писать тут
-        // следующую строку можно удалять
-        return null;
+    public static Map task4(Map<Integer, List<String>> source) {
+     Map<String, Integer> resultMap = new HashMap<>();
+     source.forEach((key, value)->{
+         value.forEach(b-> resultMap.put(b, key));
+     });
+        return resultMap;
     }
 }
